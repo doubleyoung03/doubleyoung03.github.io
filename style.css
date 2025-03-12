@@ -92,7 +92,7 @@ h1 {
 }
 
 #intro-text {
-  width: 40em;
+  width: 50em;
   float: left;
 }
 
@@ -102,6 +102,7 @@ h1 {
   height: 12em;
   float: left;
   overflow: hidden;
+  border-radius: 1em;
   position: relative; 
 }
 
