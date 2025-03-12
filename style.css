@@ -86,35 +86,29 @@ h1 {
 
 /**************************************************/
 /* Profile image and description. */
+
+
+#intro {
+  padding-top: 6em;
+  display: flex;
+}
+
+#intro-text {
+  width: 40em;
+  float: left;
+}
+
 #intro-image {
-  position: relative; 
+  margin: 2em 0 0 2em;
   width: 12em;
   height: 12em;
-  margin: 2em 0 0 2em;
-  border-radius: 1em;
+  float: left;
   overflow: hidden;
-}
-.profile-normal,
-.profile-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: opacity 0.3s ease; 
-  object-fit: cover; 
+  border-radius: 1em;
 }
 
-.profile-hover {
-  opacity: 0; 
-}
-
-#intro-image:hover .profile-normal {
-  opacity: 0; 
-}
-
-#intro-image:hover .profile-hover {
-  opacity: 1; 
+#intro-image img {
+  width: 12em;
 }
 /**************************************************/
 /* Section buttons. */
