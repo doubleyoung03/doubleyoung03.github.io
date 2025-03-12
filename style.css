@@ -85,58 +85,52 @@ h1 {
 }
 
 /**************************************************/
-/* Profile image and description */
+/* Profile image and description. */
 #intro {
   padding-top: 6em;
   display: flex;
 }
 
 #intro-text {
-  width: 50em;
+  width: 40em;
   float: left;
 }
 
 #intro-image {
   margin: 2em 0 0 2em;
   width: 12em;
-  height: 12em; 
+  height: 12em;
   float: left;
   overflow: hidden;
   border-radius: 1em;
-  position: relative; 
-  flex-shrink: 0; 
 }
-
 
 #intro-image img {
+  width: 12em;
+  height: 12em;
+  object-fit: cover;
+  transition: opacity 0.3s ease; 
+}
+
+.profile-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  position: absolute; 
-  transition: opacity 0.3s ease;
-  top: 0; 
+}
+
+.profile-container img.hover-image {
+  position: absolute;
+  top: 0;
   left: 0;
+  opacity: 0; 
 }
 
-
-#intro-image img.profile-normal {
+.profile-container:hover img.hover-image {
   opacity: 1;
-  z-index: 1;
 }
 
-
-#intro-image img.profile-hover {
-  opacity: 0;
-  z-index: 2;
-}
-
-
-#intro-image:hover img.profile-normal {
-  opacity: 0;
-}
-
-#intro-image:hover img.profile-hover {
-  opacity: 1;
+.profile-container:hover img.default-image {
+  opacity: 0; 
 }
 /**************************************************/
 /* Section buttons. */
