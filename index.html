@@ -3,66 +3,139 @@
   <head>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-<!-- Title -->
-<title>Yang Yang</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=1000">
+    <!-- Title -->
+    <title>Yang Yang</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1000">
 
-<!-- Isotope JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <!-- Isotope JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
-<!-- Custom Style -->
-<link rel="stylesheet" href="style.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
 
-<!-- Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-</style>
-</head>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&display=swap');
+      
+      body {
+        font-family: 'Asap', sans-serif;
+      }
 
-<body id="body">
+      #main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
 
-<div id="main">
-  <div id="intro">
-    <div id="intro-text">
-      <h1>Yang Yang</h1>
-      <p><i>"When you are Young, they assume you know nothing."</i></p><br><br>
-      <p>
-        Hello! This is Yang (Young) Yang. I'm an undergrad student at <a href="https://en.scu.edu.cn/">Sichuan University</a>, majoring in Mechanics, 
-        and a full-time Research Assistant at <a href="https://www.cuhk.edu.hk/english/index.html">The Chinese University of Hong Kong</a>, supervised by Prof. <a href="https://scholar.google.com/citations?user=rcF7N44AAAAJ">Hongliang Ren</a>.
-        I was also fortunate to work with Professors <a href="https://scholar.google.com/citations?user=xo2FkgIAAAAJ">Wenbo Ding</a>,
-        <a href="https://scholar.google.com/citations?user=lfQRWLkAAAAJ">Daolin Ma</a> and 
-        <a href="https://scholar.google.com/citations?user=TUuV4YgAAAAJ&hl=en&oi=sra">Hong Zhang</a>.
-      </p><br>
-      <p>
-        My research interests are in <u>Robotic Perception</u> and <u>Manipulation</u>, <u>Deep Learning</u> and <u>Mechanics</u>. 
-        They encompass tactile sensing, contact mechanics and dexterous manipulation. 
-        I am particularly interested in the design of tactile sensors and the application of tactile sensing to enhance robotic dexterous manipulation and surgical procedures.
-        <br><br><i>My goal is to push robots to approach or even exceed human-level sensing capabilities, and finally achieve human-level dexterity.</i>
-        <br><br><b>I am actively looking for a PhD position starting in Fall 2025. If you have any leads, I'd love to hear from you!</b>
-        <br><br>
-        <a href="files/CV.pdf">CV</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="https://scholar.google.com/citations?user=PbqeriMAAAAJ&hl=en">Google Scholar</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="https://www.linkedin.com/in/doubleyoung/">LinkedIn</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="mailto:youngyyyang@outlook.com">Email</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="images/wechat.png">WeChat</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <br><br>
-        youngyyyang@outlook.com
-        <br><br>
-      </p>
+      #intro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      #intro-text {
+        flex: 1;
+        margin-right: 20px;
+      }
+
+      #intro-text h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      #intro-text p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      #intro-image {
+        flex: 1;
+        text-align: center;
+      }
+
+      .profile-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .profile-container img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+      }
+
+      .profile-container img.hover-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+
+      .profile-container:hover img.hover-image {
+        opacity: 1;
+      }
+
+      .profile-container:hover img.default-image {
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body id="body">
+
+    <div id="main">
+      <div id="intro">
+        <div id="intro-text">
+          <h1>Yang Yang</h1>
+          <p><i>"When you are Young, they assume you know nothing."</i></p><br><br>
+          <p>
+            Hello! This is Yang (Young) Yang. I'm an undergrad student at <a href="https://en.scu.edu.cn/">Sichuan University</a>, majoring in Mechanics, 
+            and a full-time Research Assistant at <a href="https://www.cuhk.edu.hk/english/index.html">The Chinese University of Hong Kong</a>, supervised by Prof. <a href="https://scholar.google.com/citations?user=rcF7N44AAAAJ">Hongliang Ren</a>.
+            I was also fortunate to work with Professors <a href="https://scholar.google.com/citations?user=xo2FkgIAAAAJ">Wenbo Ding</a>,
+            <a href="https://scholar.google.com/citations?user=lfQRWLkAAAAJ">Daolin Ma</a> and 
+            <a href="https://scholar.google.com/citations?user=TUuV4YgAAAAJ&hl=en&oi=sra">Hong Zhang</a>.
+          </p><br>
+          <p>
+            My research interests are in <u>Robotic Perception</u> and <u>Manipulation</u>, <u>Deep Learning</u> and <u>Mechanics</u>. 
+            They encompass tactile sensing, contact mechanics and dexterous manipulation. 
+            I am particularly interested in the design of tactile sensors and the application of tactile sensing to enhance robotic dexterous manipulation and surgical procedures.
+            <br><br><i>My goal is to push robots to approach or even exceed human-level sensing capabilities, and finally achieve human-level dexterity.</i>
+            <br><br>
+            <a href="files/CV.pdf">CV</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://scholar.google.com/citations?user=PbqeriMAAAAJ&hl=en">Google Scholar</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://www.linkedin.com/in/doubleyoung/">LinkedIn</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="mailto:youngyyyang@outlook.com">Email</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="images/wechat.png">WeChat</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <br><br>
+            youngyyyang@outlook.com
+            <br><br>
+          </p>
+        </div>
+        <div id="intro-image">
+          <div class="profile-container">
+            <!-- Default profile image -->
+            <img src="images/profile.jpg" alt="Profile" class="default-image">
+            <!-- Hover profile image -->
+            <img src="images/profile-hover.jpg" alt="Profile Hover" class="hover-image">
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="intro-image">
-      <img src="images/profile.jpg">
-      <!-- <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=9aahQIE_shkYg36bv_yysedGxAdgyalYKuTzyaPFZ4g&cl=ffffff&w=a"></script> -->
-    </div>
-    
-  </div>
 
+  </body>
 
 
 
