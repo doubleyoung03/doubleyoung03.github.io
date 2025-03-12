@@ -85,8 +85,7 @@ h1 {
 }
 
 /**************************************************/
-/* Profile image and description. */
-
+/* Profile image and description */
 #intro {
   padding-top: 6em;
   display: flex;
@@ -103,13 +102,38 @@ h1 {
   height: 12em;
   float: left;
   overflow: hidden;
-  border-radius: 1em;
+  position: relative; 
 }
+
 
 #intro-image img {
-  width: 12em;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  position: absolute; 
+  transition: opacity 0.3s ease;
 }
 
+
+#intro-image img.profile-normal {
+  opacity: 1;
+  z-index: 1;
+}
+
+
+#intro-image img.profile-hover {
+  opacity: 0;
+  z-index: 2;
+}
+
+
+#intro-image:hover img.profile-normal {
+  opacity: 0;
+}
+
+#intro-image:hover img.profile-hover {
+  opacity: 1;
+}
 /**************************************************/
 /* Section buttons. */
 
