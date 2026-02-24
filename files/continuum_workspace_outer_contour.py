@@ -106,77 +106,98 @@ def joint_range(k_joint, sign10=None):
     return (0.0, sign10 * J_EXT)
 
 
-def circular_moving_average(arr, window):
-    if window <= 1:
-        return arr.copy()
-    if window % 2 == 0:
-        window += 1
-    pad = window // 2
-    ext = np.concatenate((arr[-pad:], arr, arr[:pad]))
-    kernel = np.ones(window, dtype=float) / float(window)
-    return np.convolve(ext, kernel, mode="valid")
+def shift_no_wrap(mask, dy, dx):
+    out = np.zeros_like(mask, dtype=bool)
+    h, w = mask.shape
+
+    if dy >= 0:
+        y_src0, y_src1 = 0, h - dy
+        y_dst0, y_dst1 = dy, h
+    else:
+        y_src0, y_src1 = -dy, h
+        y_dst0, y_dst1 = 0, h + dy
+
+    if dx >= 0:
+        x_src0, x_src1 = 0, w - dx
+        x_dst0, x_dst1 = dx, w
+    else:
+        x_src0, x_src1 = -dx, w
+        x_dst0, x_dst1 = 0, w + dx
+
+    if y_src1 > y_src0 and x_src1 > x_src0:
+        out[y_dst0:y_dst1, x_dst0:x_dst1] = mask[y_src0:y_src1, x_src0:x_src1]
+    return out
 
 
-def polygon_area(x, y):
-    return 0.5 * np.sum(x * np.roll(y, -1) - y * np.roll(x, -1))
+def majority_binary_smooth(mask, rounds=2, threshold=5):
+    m = mask.copy()
+    for _ in range(max(1, rounds)):
+        cnt = np.zeros(m.shape, dtype=np.int16)
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                cnt += shift_no_wrap(m, dy, dx).astype(np.int16)
+        m = cnt >= threshold
+    return m
 
 
-def smooth_closed_contour(x, y, window=29, passes=2):
+def binary_edge_8n(mask):
+    eroded = mask.copy()
+    for dy in (-1, 0, 1):
+        for dx in (-1, 0, 1):
+            if dy == 0 and dx == 0:
+                continue
+            eroded &= shift_no_wrap(mask, dy, dx)
+    edge = mask & (~eroded)
+    return edge
+
+
+def contour_perimeter(seg):
+    if len(seg) < 2:
+        return 0.0
+    d = np.diff(seg, axis=0)
+    return float(np.sum(np.hypot(d[:, 0], d[:, 1])))
+
+
+def smooth_closed_contour_fourier(x, y, keep_ratio=0.08):
     x = np.asarray(x, dtype=float)
     y = np.asarray(y, dtype=float)
-    if len(x) < 8:
+    if len(x) < 16:
         return x, y
 
     if np.hypot(x[0] - x[-1], y[0] - y[-1]) < 1e-10:
         x = x[:-1]
         y = y[:-1]
-
     n = len(x)
-    if n < 8:
+    if n < 16:
         return np.append(x, x[0]), np.append(y, y[0])
 
-    max_window = n - 1 if (n - 1) % 2 == 1 else n - 2
-    if max_window < 3:
-        max_window = 3
-    window = min(window, max_window)
-    if window % 2 == 0:
-        window -= 1
-    window = max(window, 3)
+    z = x + 1j * y
+    zf = np.fft.fft(z)
 
-    for _ in range(max(1, passes)):
-        x = circular_moving_average(x, window)
-        y = circular_moving_average(y, window)
+    k = int(max(8, min(n // 2, round(n * keep_ratio))))
+    filt = np.zeros_like(zf)
+    filt[: k + 1] = zf[: k + 1]
+    filt[-k:] = zf[-k:]
+    z_s = np.fft.ifft(filt)
 
-    return np.append(x, x[0]), np.append(y, y[0])
-
-
-def enforce_y_axis_symmetry(mask, xmin, xmax):
-    sym = mask.copy()
-    h, w = sym.shape
-    if xmax == xmin or w < 2:
-        return sym
-
-    col0 = int(round((0.0 - xmin) / (xmax - xmin) * (w - 1)))
-    col0 = int(np.clip(col0, 0, w - 1))
-    max_d = min(col0, w - 1 - col0)
-
-    for d in range(max_d + 1):
-        c_l = col0 - d
-        c_r = col0 + d
-        merged = sym[:, c_l] | sym[:, c_r]
-        sym[:, c_l] = merged
-        sym[:, c_r] = merged
-    return sym
+    x_s = np.real(z_s)
+    y_s = np.imag(z_s)
+    return np.append(x_s, x_s[0]), np.append(y_s, y_s[0])
 
 
-def extract_outer_contour_from_polygons(
+def extract_outer_contour_via_edge_pipeline(
     polygons,
-    pixels_y=1500,
-    padding=8.0,
-    enforce_symmetry=True,
-    smooth_window=29,
-    smooth_passes=2,
+    pixels_y=1800,
+    padding=6.0,
+    bin_threshold=0.5,
+    smooth_rounds=2,
+    smooth_threshold=5,
+    fourier_keep_ratio=0.08,
 ):
+    """
+    Pipeline:
+      render polygons -> grayscale -> binarize -> edge detect -> boundary -> smooth
+    """
     if not polygons:
         raise ValueError("polygons is empty")
 
@@ -188,9 +209,9 @@ def extract_outer_contour_from_polygons(
 
     x_span = max(xmax - xmin, 1e-6)
     y_span = max(ymax - ymin, 1e-6)
+    pixels_y = max(900, int(pixels_y))
     pixels_x = int(np.ceil(pixels_y * x_span / y_span))
     pixels_x = max(900, pixels_x)
-    pixels_y = max(900, int(pixels_y))
 
     dpi = 100
     fig_mask = plt.figure(figsize=(pixels_x / dpi, pixels_y / dpi), dpi=dpi)
@@ -208,13 +229,15 @@ def extract_outer_contour_from_polygons(
     rgba = np.asarray(fig_mask.canvas.buffer_rgba())
     plt.close(fig_mask)
 
-    mask = rgba[:, :, 0] > 16
-    if enforce_symmetry:
-        mask = enforce_y_axis_symmetry(mask, xmin, xmax)
+    gray = np.mean(rgba[:, :, :3], axis=2) / 255.0
+    binary = gray >= float(bin_threshold)
+    binary = majority_binary_smooth(binary, rounds=smooth_rounds, threshold=smooth_threshold)
 
-    z = np.flipud(mask.astype(float))
-    x_grid = np.linspace(xmin, xmax, mask.shape[1])
-    y_grid = np.linspace(ymin, ymax, mask.shape[0])
+    edge = binary_edge_8n(binary)
+
+    z = np.flipud(edge.astype(float))
+    x_grid = np.linspace(xmin, xmax, edge.shape[1])
+    y_grid = np.linspace(ymin, ymax, edge.shape[0])
 
     fig_cont, ax_cont = plt.subplots(figsize=(4, 4))
     cs = ax_cont.contour(x_grid, y_grid, z, levels=[0.5])
@@ -222,62 +245,14 @@ def extract_outer_contour_from_polygons(
 
     segs = cs.allsegs[0]
     if len(segs) == 0:
-        raise RuntimeError("No contour found from workspace mask")
+        raise RuntimeError("No boundary detected from edge image")
 
-    best = max(segs, key=lambda seg: abs(polygon_area(seg[:, 0], seg[:, 1])))
+    best = max(segs, key=contour_perimeter)
     x_raw = best[:, 0]
     y_raw = best[:, 1]
-    x_s, y_s = smooth_closed_contour(x_raw, y_raw, window=smooth_window, passes=smooth_passes)
+
+    x_s, y_s = smooth_closed_contour_fourier(x_raw, y_raw, keep_ratio=fourier_keep_ratio)
     return x_s, y_s
-
-
-def split_contour_right_left(x, y):
-    x = np.asarray(x, dtype=float)
-    y = np.asarray(y, dtype=float)
-    if len(x) < 12:
-        return x, y, x, y
-
-    if np.hypot(x[0] - x[-1], y[0] - y[-1]) < 1e-10:
-        x = x[:-1]
-        y = y[:-1]
-    n = len(x)
-
-    top_thr = np.percentile(y, 85)
-    bot_thr = np.percentile(y, 15)
-    top_candidates = np.where(y >= top_thr)[0]
-    bot_candidates = np.where(y <= bot_thr)[0]
-    if len(top_candidates) == 0 or len(bot_candidates) == 0:
-        return np.append(x, x[0]), np.append(y, y[0]), np.append(x, x[0]), np.append(y, y[0])
-
-    i_top = int(top_candidates[np.argmin(np.abs(x[top_candidates]))])
-    i_bot = int(bot_candidates[np.argmin(np.abs(x[bot_candidates]))])
-    if i_top == i_bot:
-        i_bot = (i_top + n // 2) % n
-
-    order = np.concatenate((np.arange(i_top, n), np.arange(0, i_top)))
-    xo = x[order]
-    yo = y[order]
-    i_bot_o = int(np.where(order == i_bot)[0][0])
-
-    xa = xo[: i_bot_o + 1]
-    ya = yo[: i_bot_o + 1]
-    xb = np.concatenate((xo[i_bot_o:], xo[:1]))
-    yb = np.concatenate((yo[i_bot_o:], yo[:1]))
-
-    if np.mean(xa) >= np.mean(xb):
-        xr, yr = xa, ya
-        xl, yl = xb, yb
-    else:
-        xr, yr = xb, yb
-        xl, yl = xa, ya
-
-    if yr[0] < yr[-1]:
-        xr = xr[::-1]
-        yr = yr[::-1]
-    if yl[0] < yl[-1]:
-        xl = xl[::-1]
-        yl = yl[::-1]
-    return xr, yr, xl, yl
 
 
 # =========================
@@ -390,23 +365,18 @@ for sign10 in (-1, +1):
             )
 
 # -------------------------
-# Outer contour from binary union mask (closed + smooth)
+# Outer contour via: grayscale -> binary -> edge detect -> smooth boundary
 # -------------------------
-x_contour, y_contour = extract_outer_contour_from_polygons(
+x_contour, y_contour = extract_outer_contour_via_edge_pipeline(
     sector_polygons,
-    pixels_y=1500,
-    padding=10.0,
-    enforce_symmetry=True,
-    smooth_window=29,
-    smooth_passes=2,
+    pixels_y=1900,
+    padding=4.0,
+    bin_threshold=0.5,
+    smooth_rounds=2,
+    smooth_threshold=5,
+    fourier_keep_ratio=0.07,
 )
-
-try:
-    x_r, y_r, x_l, y_l = split_contour_right_left(x_contour, y_contour)
-    ax.plot(x_r, y_r, color="crimson", linewidth=2.9, zorder=9, label="Outer contour (right)")
-    ax.plot(x_l, y_l, color="crimson", linewidth=2.9, zorder=9, label="Outer contour (left)")
-except Exception:
-    ax.plot(x_contour, y_contour, color="crimson", linewidth=2.9, zorder=9, label="Outer contour")
+ax.plot(x_contour, y_contour, color="crimson", linewidth=3.0, zorder=9, label="Outer contour")
 
 # Optionally show joint center points (rotated for display)
 show_joint_points = True
@@ -423,7 +393,7 @@ if show_joint_points:
 ax.set_aspect("equal", adjustable="box")
 ax.set_xlabel("x (mm)")
 ax.set_ylabel("y (mm)")
-ax.set_title("Workspace rotated to +y with smooth closed outer contour")
+ax.set_title("Workspace rotated to +y with edge-detected smooth boundary")
 ax.grid(True, alpha=0.25)
 ax.legend(loc="upper right")
 plt.show()
