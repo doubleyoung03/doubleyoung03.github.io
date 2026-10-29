@@ -316,3 +316,43 @@ h3 a:hover {
   font-size: 16px; 
   line-height: 1.5; 
 }
+/* Internship emphasis uses the existing link color and typography. */
+#intro-text .internship-callout {
+  margin-top: 1.2em;
+  padding: 0.7em 0.9em;
+  border-left: 3px solid rgb(20, 110, 190);
+  background: #f0f6fc;
+  color: #134e80;
+  font-weight: 600;
+  text-align: left;
+}
+.thumbnail .paper-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #111;
+}
+
+/* Keep the same layout usable in narrow preview panels. */
+@media (max-width: 900px) {
+  #main { width: calc(100% - 32px); }
+  #intro-text { flex: 1; min-width: 0; }
+  #intro-image { flex-shrink: 0; width: 20%; height: auto; aspect-ratio: 1; }
+  #intro-image img { width: 100%; }
+  .button { margin-right: 0.8em; }
+}
+
+/* Keep all portrait styles inside the original rounded frame. */
+#intro-image { position: relative; align-self: flex-start; }
+#intro-image #profile-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+#intro-image:focus-visible { outline: 2px solid rgb(20, 110, 190); outline-offset: 4px; }
+#intro-image #profile-photo[src$="proflie2.JPG"] { object-position: center bottom; }
+#intro-image #profile-photo[src$="profile3.JPG"] { object-position: center center; }

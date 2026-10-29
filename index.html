@@ -14,7 +14,7 @@
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
 <!-- Custom Style -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261028-portraits2">
 
 <!-- Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,9 +40,9 @@
         <a href="https://scholar.google.com/citations?user=TUuV4YgAAAAJ&hl=en&oi=sra">Hong Zhang</a>.
       </p><br>
       <p>
-        I research the frontier of robotic sensing, specifically designing advanced tactile and multi-modal sensors. 
-        My work bridges the gap between hardware innovation and robotic application. 
-        By developing sensory systems that exceed human capabilities, I aim to empower robots to achieve true human-level dexterity in complex environments.
+        I design multimodal tactile sensors and develop algorithms for tactile representation, pressure sensor arrays, and robotic perception. My current research combines resistive and vision-based tactile sensing, with an interest in robot learning and manipulation.
+        </p>
+      <p class="internship-callout"><strong>Seeking Summer 2027 research / engineering internships in robotic tactile sensing and manipulation.</strong>
       </p><br>
       <p>
         If you are interested in anything about me and my research, please feel free to contact me at: yyang672@usc.edu
@@ -58,8 +58,8 @@
 
       </p>
     </div>
-    <div id="intro-image">
-      <img src="images/profile.jpg">
+    <div id="intro-image" tabindex="0" aria-label="Yang Yang: hover or focus to cycle portrait styles">
+      <img id="profile-photo" src="images/profile.jpg" alt="Yang Yang">
     </div>
     
   </div>
@@ -75,6 +75,7 @@
   </div>
 
   <div class="grid">
+
 
     <!-- News -->
     <div class="list-item news" data-category="news">
@@ -108,8 +109,13 @@
 <!-- Experience -->
 
     <div class="list-item experience" data-category="experience" style="background: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
-      <h3 style="font-size: 1.75em; color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">🎓 Internships</h3>
+      <h3 style="font-size: 1.75em; color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">🎓 Research Experience</h3>
       <ul style="list-style-type: none; padding-left: 0;">
+        <li style="margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s, box-shadow 0.2s;">
+          <strong>Doctoral Research</strong>, Aug 2025 - Present<br><br>
+          <a href="https://www.usc.edu/" style="color: #3498db; text-decoration: none;">University of Southern California (USC)</a>, Supervised by Prof. <a href="https://scholar.google.com/citations?user=VD_xPKwAAAAJ" style="color: #3498db; text-decoration: none;">Hangbo Zhao</a>
+        </li>
+
         <li style="margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s, box-shadow 0.2s;">
           <strong>Research Assistant</strong>, Oct 2024 - May 2025<br><br>
           <a href="https://www.cuhk.edu.hk/english/index.html" style="color: #3498db; text-decoration: none;">The Chinese University of Hong Kong (CUHK)</a>, Supervised by Prof. <a href="https://scholar.google.com/citations?user=rcF7N44AAAAJ" style="color: #3498db; text-decoration: none;">Hongliang Ren</a><br><br>
@@ -131,6 +137,9 @@
     <div class="list-item experience" data-category="experience" style="background: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
       <h3 style="font-size: 1.75em; color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">📚 Teaching Assistant</h3>
       <ul style="list-style-type: none; padding-left: 0;">
+        <li style="margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s, box-shadow 0.2s;">
+          <strong>Dynamics</strong>, University of Southern California (USC), Fall 2026
+        </li>
         <li style="margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s, box-shadow 0.2s;">
           <strong>Structural Mechanics</strong>, Sichuan University, Spring 2024
         </li>
@@ -166,11 +175,48 @@
     
 
 
+
+    <div class="list-item experience" data-category="experience" style="background: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+      <h3 style="font-size: 1.75em; color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px;">Academic Service</h3>
+      <p style="line-height: 1.5;">Reviewer, ICRA, AJRIS</p>
+    </div>
+
     <!-- Publication -->
+
     <div class="list-item publication" data-category="publication">
-      <a href="https://doi.org/10.1038/s44460-025-00006-y" class="thumbnail">
-        <img src="images/J4.png" alt="" />
-      </a>
+      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="CoTac: Co-located Electro-Visual Tactile Sensor demo"><source src="videos/CoTac.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/CoTac.mp4">Watch video</a></video></div>
+      <div class="project-description">
+        <h3><strong>CoTac: Co-located Electro-Visual Tactile Sensor</strong></h3>
+        <p><span style="color: black;">Yang Yang</span>, Yukai Jin, Yuwen Zhang, Olivia Leatherman, Hangbo Zhao<br>
+        <i>Ongoing Project</i><br>
+        <a href="videos/CoTac.mp4" target="_blank" rel="noopener">Video</a></p>
+      </div>
+    </div>
+
+
+    <div class="list-item publication" data-category="publication">
+      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="Morphable Nerve Cuffs for Neural Stimulation and Recording on Sub-mm Peripheral Nerves demo"><source src="videos/Cuff.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/Cuff.mp4">Watch video</a></video></div>
+      <div class="project-description">
+        <h3><strong>Morphable Nerve Cuffs for Neural Stimulation and Recording on Sub-mm Peripheral Nerves</strong></h3>
+        <p>Xinghao Huang<sup>†</sup>, <span style="color: black;">Yang Yang</span><sup>†</sup>, Shaowu Tang, Zixin Chen, Yukai Jin, Max Li, Liheng Yang, Jialu Wu, Dong Song, Hangbo Zhao<br>
+        <i>Manuscript in Preparation</i> · † Equal Contribution<br>
+        <a href="videos/Cuff.mp4" target="_blank" rel="noopener">Video</a></p>
+      </div>
+    </div>
+
+    <div class="list-item publication" data-category="publication">
+      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="Strong, switchable electroadhesive clutches from microphase-separated ionoelastomers for multifunctional robotic interfaces demo"><source src="videos/Climbing%20Robot.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/Climbing%20Robot.mp4">Watch video</a></video></div>
+      <div class="project-description">
+        <h3><strong>Strong, switchable electroadhesive clutches from microphase-separated ionoelastomers for multifunctional robotic interfaces</strong></h3>
+        <p>Changgeng Zhang, Shukun Yin, Xinghao Huang, <span style="color: black;">Yang Yang</span>, Xuebing Zhang, Qinai Zhao, Wei Gao, Hangbo Zhao<br>
+        <i>In Revision at Nature Communications</i><br>
+        <a href="videos/Climbing%20Robot.mp4" target="_blank" rel="noopener">Video</a></p>
+      </div>
+    </div>
+
+
+    <div class="list-item publication" data-category="publication">
+      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="SuperTac demo" poster="images/J4.png"><source src="videos/SuperTac.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/SuperTac.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3>
           <a href="https://doi.org/10.1038/s44460-025-00006-y">
@@ -182,15 +228,13 @@
             <span style="color: black;">Yang Yang</span>, Chuqiao Lyu, Shilong Mu, Xueqian Wang, Zhaoqian Xie, Changsheng Wu, Xinge Yu, Wenbo Ding <br>
           <i>Nature Sensors</i><br>
           <a href="https://doi.org/10.1038/s44460-025-00006-y"> Webpage</a> |
-          <a href="files/J4.pdf">PDF</a> 
+          <a href="files/J4.pdf">PDF</a> | <a href="videos/SuperTac.mp4" target="_blank" rel="noopener">Video</a>
         </p>
       </div>
     </div>
 
     <div class="list-item publication" data-category="publication">
-      <a href="https://doi.org/10.1016/j.procs.2025.10.114" class="thumbnail">
-        <img src="images/C2.png" alt="" />
-      </a>
+      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="Conformable tactile sensor demo" poster="images/C2.png"><source src="videos/palpation.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/palpation.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3>
           <a href="https://doi.org/10.1016/j.procs.2025.10.114">
@@ -199,17 +243,15 @@
         </h3>
         <p>
           <span style="color: black;">Yang Yang</span>, Tao Zhang, Yupeng Wang, Wenchao Yue, Tangyou Liu, Hongliang Ren<br>
-          <i>Procedia Computer Science</i><br>
+          <i>International Conference on Biomimetic Intelligence and Robotics 2025 (ICBIR)</i><br>
           <a href="https://doi.org/10.1016/j.procs.2025.10.114"> Webpage</a> |
-          <a href="files/C2.pdf">PDF</a> 
+          <a href="files/C2.pdf">PDF</a> | <a href="videos/palpation.mp4" target="_blank" rel="noopener">Video</a>
         </p>
       </div>
     </div>
 
      <div class="list-item publication" data-category="publication">
-      <a href="https://doi.org/10.1109/TMECH.2025.3566394" class="thumbnail">
-        <img src="images/J3.png" alt="" />
-      </a>
+      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="VTire demo" poster="images/J3.png"><source src="videos/VTire.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/VTire.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3>
           <a href="https://doi.org/10.1109/TMECH.2025.3566394">
@@ -220,16 +262,14 @@
           Shoujie Li<sup>†</sup>, Jianle Xu<sup>†</sup>, Tong Wu, <span style="color: black;">Yang Yang</span>, Yanbo Chen, Xueqian Wang, Wenbo Ding, Xiao-ping Zhang<br>
           <i>IEEE Transactions on Mechatronics</i> <br>
           <a href="https://doi.org/10.1109/TMECH.2025.3566394">Webpage</a> |
-          <a href="files/J3.pdf">PDF</a> 
+          <a href="files/J3.pdf">PDF</a> | <a href="videos/VTire.mp4" target="_blank" rel="noopener">Video</a>
           <br>
         </p>
       </div>
     </div>
 
     <div class="list-item publication" data-category="publication">
-      <a href="https://ieeexplore.ieee.org/abstract/document/11128801" class="thumbnail">
-        <img src="images/C1.png" alt="" />
-      </a>
+      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="FBG endoscope sensing demo" poster="images/C1.png"><source src="videos/FBG.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/FBG.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3>
           <a href="https://ieeexplore.ieee.org/abstract/document/11128801">
@@ -240,7 +280,7 @@
           Tao Zhang<sup>†</sup>, <span style="color: black;">Yang Yang</span><sup>†</sup>, Yang Yang, Huxin Gao, Jiewen Lai, Hongliang Ren<br>
           <i>International Conference on Robotics & Automation (ICRA) 2025</i><br>
           <a href="https://ieeexplore.ieee.org/abstract/document/11128801">Webpage</a> |
-          <a href="files/C1.pdf">PDF</a> 
+          <a href="files/C1.pdf">PDF</a> | <a href="videos/FBG.mp4" target="_blank" rel="noopener">Video</a>
         </p>
       </div>
     </div>
@@ -300,6 +340,7 @@
           <li style="margin-bottom: 10px; padding: 10px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">🏀 Basketball</li>
           <li style="margin-bottom: 10px; padding: 10px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">✈️ Traveling</li>
           <li style="margin-bottom: 10px; padding: 10px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">🥾 Hiking</li>
+          <li style="margin-bottom: 10px; padding: 10px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">🧗 Rock Climbing</li>
           <li style="margin-bottom: 10px; padding: 10px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">🎤 Cross Talk</li>
           <li style="margin-bottom: 10px; padding: 10px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">🎩 Magic</li>
           <li style="margin-bottom: 10px; padding: 10px; background: #fff; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">🚶 Strolling around</li>
@@ -353,8 +394,8 @@
       function update_isotope() {
         // Retrieve cached button click.
         var defaultFilterValue = localStorage.getItem('filterValue');
-        if (defaultFilterValue == null) {
-          defaultFilterValue = ".highlight"
+        if (![".news", ".experience", ".publication", ".misc"].includes(defaultFilterValue)) {
+          defaultFilterValue = ".publication";
         }
         $grid.isotope({ filter: defaultFilterValue });
         var buttons = document.getElementsByClassName("button");
@@ -393,7 +434,78 @@
         }
       }
 
+      // Portrait styles: default photo at rest, three styles while hovered/focused.
+      (function() {
+        var frame = document.getElementById('intro-image');
+        var photo = document.getElementById('profile-photo');
+        var sources = ['images/profile.jpg', 'images/proflie2.JPG', 'images/profile3.JPG'];
+        var ready = [true, false, false];
+        var timer = null;
+        var index = 0;
+        var active = false;
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        sources.slice(1).forEach(function(src, offset) {
+          var image = new Image();
+          image.onload = function() {
+            ready[offset + 1] = true;
+            if (active && index === 0) showNext();
+          };
+          image.src = src;
+        });
+        function showNext() {
+          for (var step = 1; step <= sources.length; step++) {
+            var next = (index + step) % sources.length;
+            if (ready[next]) {
+              index = next;
+              photo.src = sources[index];
+              break;
+            }
+          }
+        }
+        function start() {
+          if (active) return;
+          active = true;
+          showNext();
+          if (!reducedMotion.matches) timer = window.setInterval(showNext, 1500);
+        }
+        function reset() {
+          active = false;
+          window.clearInterval(timer);
+          timer = null;
+          index = 0;
+          photo.src = sources[0];
+        }
+        frame.addEventListener('pointerenter', function(event) {
+          if (event.pointerType !== 'touch') start();
+        });
+        frame.addEventListener('pointerleave', reset);
+        frame.addEventListener('focus', start);
+        frame.addEventListener('blur', reset);
+        window.addEventListener('blur', reset);
+        document.addEventListener('visibilitychange', function() {
+          if (document.hidden) reset();
+        });
+      })();
+
+      // Play only visible demos; pause when switching tabs or scrolling away.
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var videoObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          var video = entry.target;
+          if (entry.isIntersecting && !reduceMotion) {
+            video.play().catch(function() { /* Native controls remain available. */ });
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.25 });
+      document.querySelectorAll('.paper-video').forEach(function(video) {
+        videoObserver.observe(video);
+        video.addEventListener('loadedmetadata', function() { $grid.isotope('layout'); });
+      });
+
       update_isotope();
+      $(window).on("load", function() { $grid.isotope("layout"); });
 
     </script>
   </body>
