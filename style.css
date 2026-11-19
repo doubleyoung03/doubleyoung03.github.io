@@ -356,3 +356,6 @@ h3 a:hover {
 #intro-image:focus-visible { outline: 2px solid rgb(20, 110, 190); outline-offset: 4px; }
 #intro-image #profile-photo[src$="proflie2.JPG"] { object-position: center bottom; }
 #intro-image #profile-photo[src$="profile3.JPG"] { object-position: center center; }
+
+/* Decorative thumbnail loops; use the adjacent Video link for the full player. */
+.thumbnail .paper-video { pointer-events: none; }

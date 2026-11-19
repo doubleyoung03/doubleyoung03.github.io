@@ -14,7 +14,7 @@
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
 <!-- Custom Style -->
-<link rel="stylesheet" href="style.css?v=20261119-footer-fix">
+<link rel="stylesheet" href="style.css?v=20261119-video-previews">
 
 <!-- Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,6 +46,9 @@
     line-height: 1.5;
     text-align: center;
   }
+
+  /* Thumbnail previews behave like silent looping images, without hover controls. */
+  .thumbnail .paper-video { pointer-events: none; }
 </style>
 </head>
 
@@ -212,7 +215,7 @@
     <!-- Publication -->
 
     <div class="list-item publication" data-category="publication">
-      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="CoTac: Co-located Electro-Visual Tactile Sensor demo"><source src="videos/CoTac.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/CoTac.mp4">Watch video</a></video></div>
+      <div class="thumbnail"><video class="paper-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nofullscreen noremoteplayback" poster="videos/previews/cotac.jpg" aria-label="CoTac: Co-located Electro-Visual Tactile Sensor demo"><source src="videos/previews/cotac.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/CoTac.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3><strong>CoTac: Co-located Electro-Visual Tactile Sensor</strong></h3>
         <p><span style="color: black;">Yang Yang</span>, et. al.<br>
@@ -223,7 +226,7 @@
 
 
     <div class="list-item publication" data-category="publication">
-      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="Morphable Nerve Cuffs for Neural Stimulation and Recording on Sub-mm Peripheral Nerves demo"><source src="videos/Cuff.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/Cuff.mp4">Watch video</a></video></div>
+      <div class="thumbnail"><video class="paper-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nofullscreen noremoteplayback" poster="videos/previews/cuff.jpg" aria-label="Morphable Nerve Cuffs for Neural Stimulation and Recording on Sub-mm Peripheral Nerves demo"><source src="videos/previews/cuff.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/Cuff.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3><strong>Morphable Nerve Cuffs for Neural Stimulation and Recording on Sub-mm Peripheral Nerves</strong></h3>
         <p>Xinghao Huang<sup>†</sup>, <span style="color: black;">Yang Yang</span><sup>†</sup>, Shaowu Tang, Zixin Chen, Yukai Jin, Max Li, Liheng Yang, Jialu Wu, Dong Song, Hangbo Zhao<br>
@@ -233,7 +236,7 @@
     </div>
 
     <div class="list-item publication" data-category="publication">
-      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="Strong, switchable electroadhesive clutches from microphase-separated ionoelastomers for multifunctional robotic interfaces demo"><source src="videos/Climbing%20Robot.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/Climbing%20Robot.mp4">Watch video</a></video></div>
+      <div class="thumbnail"><video class="paper-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nofullscreen noremoteplayback" poster="videos/previews/climbing-robot.jpg" aria-label="Strong, switchable electroadhesive clutches from microphase-separated ionoelastomers for multifunctional robotic interfaces demo"><source src="videos/previews/climbing-robot.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/Climbing%20Robot.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3><strong>Strong, switchable electroadhesive clutches from microphase-separated ionoelastomers for multifunctional robotic interfaces</strong></h3>
         <p>Changgeng Zhang, Shukun Yin, Xinghao Huang, <span style="color: black;">Yang Yang</span>, Xuebing Zhang, Qinai Zhao, Wei Gao, Hangbo Zhao<br>
@@ -244,7 +247,7 @@
 
 
     <div class="list-item publication" data-category="publication">
-      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="SuperTac demo" poster="images/J4.png"><source src="videos/SuperTac.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/SuperTac.mp4">Watch video</a></video></div>
+      <div class="thumbnail"><video class="paper-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nofullscreen noremoteplayback" poster="videos/previews/supertac.jpg" aria-label="SuperTac demo"><source src="videos/previews/supertac.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/SuperTac.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3>
           <a href="https://doi.org/10.1038/s44460-025-00006-y">
@@ -262,7 +265,7 @@
     </div>
 
     <div class="list-item publication" data-category="publication">
-      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="Conformable tactile sensor demo" poster="images/C2.png"><source src="videos/palpation.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/palpation.mp4">Watch video</a></video></div>
+      <div class="thumbnail"><video class="paper-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nofullscreen noremoteplayback" poster="videos/previews/palpation.jpg" aria-label="Conformable tactile sensor demo"><source src="videos/previews/palpation.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/palpation.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3>
           <a href="https://doi.org/10.1016/j.procs.2025.10.114">
@@ -279,7 +282,7 @@
     </div>
 
      <div class="list-item publication" data-category="publication">
-      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="VTire demo" poster="images/J3.png"><source src="videos/VTire.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/VTire.mp4">Watch video</a></video></div>
+      <div class="thumbnail"><video class="paper-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nofullscreen noremoteplayback" poster="videos/previews/vtire.jpg" aria-label="VTire demo"><source src="videos/previews/vtire.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/VTire.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3>
           <a href="https://doi.org/10.1109/TMECH.2025.3566394">
@@ -297,7 +300,7 @@
     </div>
 
     <div class="list-item publication" data-category="publication">
-      <div class="thumbnail"><video class="paper-video" controls muted loop playsinline preload="none" aria-label="FBG endoscope sensing demo" poster="images/C1.png"><source src="videos/FBG.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/FBG.mp4">Watch video</a></video></div>
+      <div class="thumbnail"><video class="paper-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nofullscreen noremoteplayback" poster="videos/previews/fbg.jpg" aria-label="FBG endoscope sensing demo"><source src="videos/previews/fbg.mp4" type="video/mp4">Your browser does not support embedded video. <a href="videos/FBG.mp4">Watch video</a></video></div>
       <div class="project-description">
         <h3>
           <a href="https://ieeexplore.ieee.org/abstract/document/11128801">
@@ -516,21 +519,28 @@
         });
       })();
 
-      // Play only visible demos; pause when switching tabs or scrolling away.
+      // Lightweight silent loops; full-resolution videos remain in the Video links.
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var videoObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           var video = entry.target;
-          if (entry.isIntersecting && !reduceMotion) {
-            video.play().catch(function() { /* Native controls remain available. */ });
+          if (entry.isIntersecting && !reduceMotion && !document.hidden) {
+            video.play().catch(function() { /* Autoplay may be limited by the browser; the poster and full Video link remain available. */ });
           } else {
             video.pause();
           }
         });
-      }, { threshold: 0.25 });
+      }, { rootMargin: "160px 0px", threshold: 0.01 });
       document.querySelectorAll('.paper-video').forEach(function(video) {
         videoObserver.observe(video);
         video.addEventListener('loadedmetadata', function() { $grid.isotope('layout'); });
+      });
+
+      document.addEventListener('visibilitychange', function() {
+        document.querySelectorAll('.paper-video').forEach(function(video) {
+          if (document.hidden) video.pause();
+          else { videoObserver.unobserve(video); videoObserver.observe(video); }
+        });
       });
 
       update_isotope();

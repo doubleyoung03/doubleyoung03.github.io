@@ -1,0 +1,58 @@
+[
+  {
+    "source": "videos/CoTac.mp4",
+    "preview": "videos/previews/cotac.mp4",
+    "start_seconds": 10,
+    "duration_seconds": 15,
+    "poster_source_seconds": 10.5,
+    "preview_bytes": 296865
+  },
+  {
+    "source": "videos/Cuff.mp4",
+    "preview": "videos/previews/cuff.mp4",
+    "start_seconds": 0,
+    "duration_seconds": 15,
+    "poster_source_seconds": 0.5,
+    "preview_bytes": 175256
+  },
+  {
+    "source": "videos/Climbing Robot.mp4",
+    "preview": "videos/previews/climbing-robot.mp4",
+    "start_seconds": 10,
+    "duration_seconds": 15,
+    "poster_source_seconds": 10.5,
+    "preview_bytes": 132576
+  },
+  {
+    "source": "videos/SuperTac.mp4",
+    "preview": "videos/previews/supertac.mp4",
+    "start_seconds": 0,
+    "duration_seconds": 15,
+    "poster_source_seconds": 0.5,
+    "preview_bytes": 158635
+  },
+  {
+    "source": "videos/palpation.mp4",
+    "preview": "videos/previews/palpation.mp4",
+    "start_seconds": 0,
+    "duration_seconds": 15,
+    "poster_source_seconds": 0.5,
+    "preview_bytes": 174020
+  },
+  {
+    "source": "videos/VTire.mp4",
+    "preview": "videos/previews/vtire.mp4",
+    "start_seconds": 0,
+    "duration_seconds": 15,
+    "poster_source_seconds": 0.5,
+    "preview_bytes": 233378
+  },
+  {
+    "source": "videos/FBG.mp4",
+    "preview": "videos/previews/fbg.mp4",
+    "start_seconds": 15,
+    "duration_seconds": 15,
+    "poster_source_seconds": 15.5,
+    "preview_bytes": 42498
+  }
+]
